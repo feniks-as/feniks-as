@@ -1,8 +1,615 @@
-hero.jpg
-about-1.jpg
-about-2.jpg
-section-bg.jpg
-footer-bg.jpg
-cat-sanitary.jpg
-cat-chemicals.jpg
-cat-packaging.jpg
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feniks AS | Хигиена, чистење и потрошен материјал</title>
+  <meta name="description" content="Feniks AS – хигиенски производи, средства за чистење и потрошен материјал за компании и институции." />
+  <style>
+    :root{
+      --orange:#f39a1f;
+      --orange-dark:#e58a0d;
+      --black:#151515;
+      --text:#222;
+      --muted:#6c6c6c;
+      --light:#f5f5f5;
+      --white:#fff;
+      --border:#e8e8e8;
+      --container:1180px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.5;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    ul{margin:0;padding:0;list-style:none}
+
+    .container{
+      width:min(var(--container), calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    .topbar{
+      background:var(--orange);
+      color:#fff;
+      font-size:13px;
+    }
+    .topbar-inner{
+      min-height:38px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .topbar-left,.topbar-right{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    .header{
+      background:rgba(21,21,21,.95);
+      color:#fff;
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:82px;
+      gap:20px;
+    }
+    .logo{
+      font-size:32px;
+      font-weight:800;
+      letter-spacing:.5px;
+    }
+    .logo span{color:var(--orange)}
+
+    .menu{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      font-size:14px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .menu a{
+      color:#fff;
+      opacity:.92;
+      transition:.2s ease;
+    }
+    .menu a:hover,
+    .menu a.active{color:var(--orange)}
+
+    .mobile-toggle{
+      display:none;
+      background:none;
+      border:1px solid rgba(255,255,255,.25);
+      color:#fff;
+      padding:10px 12px;
+      font-size:14px;
+      border-radius:4px;
+      cursor:pointer;
+    }
+
+    .hero{
+      position:relative;
+      min-height:640px;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      background:
+        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+        url('assets/img/hero.jpg') center/cover no-repeat;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+      width:0;
+      height:0;
+      border-top:180px solid transparent;
+      border-bottom:180px solid transparent;
+      border-left:0;
+      border-right:180px solid var(--orange);
+      opacity:.95;
+    }
+    .hero-content{
+      position:relative;
+      max-width:650px;
+      padding:80px 0;
+      z-index:1;
+    }
+    .eyebrow{
+      display:inline-block;
+      color:var(--orange);
+      font-size:15px;
+      font-weight:800;
+      text-transform:uppercase;
+      margin-bottom:14px;
+      letter-spacing:.4px;
+    }
+    .hero h1{
+      margin:0 0 18px;
+      font-size:66px;
+      line-height:1.05;
+      text-transform:uppercase;
+      font-weight:800;
+      max-width:620px;
+    }
+    .hero p{
+      margin:0 0 28px;
+      max-width:560px;
+      color:#f0f0f0;
+      font-size:17px;
+    }
+
+    .btn{
+      display:inline-block;
+      background:var(--orange);
+      color:#fff;
+      padding:14px 26px;
+      font-weight:700;
+      border-radius:2px;
+      transition:.2s ease;
+    }
+    .btn:hover{background:var(--orange-dark)}
+    .btn-dark{
+      background:var(--black);
+    }
+
+    .section{
+      padding:90px 0;
+    }
+    .section-light{background:#fff}
+    .section-gray{background:var(--light)}
+    .section-dark{
+      background:
+        linear-gradient(rgba(21,21,21,.82), rgba(21,21,21,.82)),
+        url('assets/img/section-bg.jpg') center/cover no-repeat;
+      color:#fff;
+    }
+
+    .section-heading{
+      max-width:700px;
+      margin-bottom:36px;
+    }
+    .section-heading .line{
+      width:48px;
+      height:4px;
+      background:var(--orange);
+      margin-bottom:14px;
+    }
+    .section-heading h2{
+      margin:0 0 12px;
+      font-size:42px;
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+    .section-heading p{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .section-dark .section-heading p{color:#ddd}
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:40px;
+      align-items:center;
+    }
+    .stats{
+      display:flex;
+      gap:34px;
+      margin-top:30px;
+      flex-wrap:wrap;
+    }
+    .stat strong{
+      display:block;
+      font-size:34px;
+      color:var(--orange);
+      line-height:1;
+      margin-bottom:6px;
+    }
+    .stat span{color:var(--muted);font-size:14px}
+    .about-collage{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      align-items:end;
+    }
+    .about-collage img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      min-height:220px;
+    }
+    .about-collage .tall{min-height:320px}
+
+    .cards-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:28px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+      overflow:hidden;
+    }
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+    .card-body{
+      padding:26px 22px;
+      border-bottom:3px solid var(--orange);
+    }
+    .card h3{
+      margin:0 0 12px;
+      font-size:28px;
+      text-transform:uppercase;
+      line-height:1.1;
+    }
+    .card p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:15px;
+    }
+    .card ul li{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:8px;
+      position:relative;
+      padding-left:16px;
+    }
+    .card ul li::before{
+      content:"•";
+      position:absolute;
+      left:0;
+      color:var(--orange);
+      font-weight:700;
+    }
+
+    .categories-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:24px;
+    }
+    .cat-box{
+      background:#fff;
+      padding:28px 24px;
+      border-top:4px solid var(--orange);
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
+      min-height:210px;
+    }
+    .cat-box h3{
+      margin:0 0 12px;
+      font-size:24px;
+      text-transform:uppercase;
+      line-height:1.15;
+    }
+    .cat-box p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .cta-strip{
+      background:var(--orange);
+      color:#fff;
+    }
+    .cta-strip-inner{
+      min-height:140px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+    .cta-strip h3{
+      margin:0 0 8px;
+      font-size:34px;
+      line-height:1.1;
+      text-transform:uppercase;
+    }
+    .cta-strip p{
+      margin:0;
+      max-width:700px;
+      color:#fff7ef;
+    }
+
+    .footer{
+      background:
+        linear-gradient(rgba(15,15,15,.92), rgba(15,15,15,.92)),
+        url('assets/img/footer-bg.jpg') center/cover no-repeat;
+      color:#fff;
+      padding:70px 0 24px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.2fr .9fr .8fr .9fr;
+      gap:34px;
+    }
+    .footer h4{
+      margin:0 0 18px;
+      font-size:20px;
+      color:var(--orange);
+      text-transform:uppercase;
+    }
+    .footer p,
+    .footer li,
+    .footer a{
+      color:#d6d6d6;
+      font-size:14px;
+      margin-bottom:10px;
+    }
+    .copyright{
+      margin-top:34px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.12);
+      color:#bcbcbc;
+      font-size:13px;
+    }
+
+    @media (max-width: 1100px){
+      .hero h1{font-size:54px}
+      .cards-grid,.categories-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media (max-width: 820px){
+      .topbar-inner{justify-content:center}
+      .mobile-toggle{display:block}
+      .menu{
+        display:none;
+        position:absolute;
+        left:0;
+        right:0;
+        top:100%;
+        background:var(--black);
+        padding:18px 16px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:14px;
+        border-top:1px solid rgba(255,255,255,.08);
+      }
+      .menu.open{display:flex}
+      .nav{position:relative}
+      .hero{min-height:560px}
+      .hero::before{display:none}
+      .hero h1{font-size:42px}
+      .about-grid{grid-template-columns:1fr}
+      .categories-grid,.cards-grid,.footer-grid{grid-template-columns:1fr}
+      .section{padding:70px 0}
+      .section-heading h2{font-size:34px}
+      .cta-strip h3{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span>📞 +389 70 210 190</span>
+        <span>✉️ aleksandar@feniks-as.com</span>
+      </div>
+      <div class="topbar-right">
+        <span>Штип, Северна Македонија</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">Feniks <span>AS</span></a>
+      <button class="mobile-toggle" id="menuToggle">Menu</button>
+      <nav>
+        <div class="menu" id="menu">
+          <a href="index.html" class="active">Почетна</a>
+          <a href="proizvodi.html">Производи</a>
+          <a href="uslugi.html">Услуги</a>
+          <a href="katalog.html">Каталог</a>
+          <a href="za nas.html">За нас</a>
+          <a href="kontakt.html">Контакт</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="eyebrow">Професионални решенија за хигиена</span>
+        <h1>Чиста средина. Сигурно решение.</h1>
+        <p>
+          Feniks AS обезбедува хигиенски производи, средства за чистење и потрошен материјал за компании, институции и угостителски објекти.
+        </p>
+        <a href="proizvodi.html" class="btn">Погледни производи</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light">
+    <div class="container about-grid">
+      <div>
+        <div class="section-heading">
+          <div class="line"></div>
+          <h2>Ваш партнер за хигиена и снабдување</h2>
+          <p>
+            Нудиме широк асортиман на санитарни производи, средства за чистење, амбалажа, канцелариски материјали и тонери — со сигурна испорака и професионален пристап.
+          </p>
+        </div>
+        <p class="muted">
+          Нашата цел е да им обезбедиме на клиентите практични, економични и квалитетни решенија за секојдневно одржување на хигиената и организацијата на работниот простор.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <strong>7+</strong>
+            <span>Главни категории</span>
+          </div>
+          <div class="stat">
+            <strong>B2B</strong>
+            <span>Фокус на деловни клиенти</span>
+          </div>
+          <div class="stat">
+            <strong>100%</strong>
+            <span>Посветеност на услуга</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-collage">
+        <img src="assets/img/about-1.jpg" alt="Feniks AS products" />
+        <img src="assets/img/about-2.jpg" alt="Feniks AS support" class="tall" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-heading">
+        <div class="line"></div>
+        <h2>Главни категории</h2>
+        <p>Сè што ви е потребно за хигиена, чистење и секојдневно снабдување на едно место.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="card">
+          <img src="assets/img/cat-sanitary.jpg" alt="Санитарни производи" />
+          <div class="card-body">
+            <h3>Санитарни производи</h3>
+            <p>Практични решенија за санитарни простории и секојдневна хигиена.</p>
+            <ul>
+              <li>Тоалетна хартија</li>
+              <li>Брисачи за раце</li>
+              <li>Салфети и сапуни</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/img/cat-chemicals.jpg" alt="Средства за чистење" />
+          <div class="card-body">
+            <h3>Средства за чистење</h3>
+            <p>Професионални препарати за различни површини и нивоа на одржување.</p>
+            <ul>
+              <li>Санитарии и подови</li>
+              <li>Стакло и кујни</li>
+              <li>Дезинфекција</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="assets/img/cat-packaging.jpg" alt="Амбалажа" />
+          <div class="card-body">
+            <h3>Амбалажа и потрошен материјал</h3>
+            <p>Производи за угостителство, канцеларии и секојдневна деловна употреба.</p>
+            <ul>
+              <li>Еднократна амбалажа</li>
+              <li>Канцелариски материјал</li>
+              <li>Тонери и ролни</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <div class="section-heading">
+        <div class="line"></div>
+        <h2>Што нудиме</h2>
+        <p>Feniks AS не е само добавувач на производи, туку и партнер во организацијата на хигиената.</p>
+      </div>
+
+      <div class="categories-grid">
+        <div class="cat-box">
+          <h3>Продажба и дистрибуција</h3>
+          <p>Снабдување со хигиенски производи, средства за чистење и потрошен материјал за деловни корисници.</p>
+        </div>
+        <div class="cat-box">
+          <h3>Програми за чистење</h3>
+          <p>Прилагодени насоки за чистење по тип на објект, простор и фреквенција на одржување.</p>
+        </div>
+        <div class="cat-box">
+          <h3>Едукација за примена</h3>
+          <p>Поддршка за правилно користење на средствата и приборот, со фокус на безбедност и економичност.</p>
+        </div>
+        <div class="cat-box">
+          <h3>Континуирана соработка</h3>
+          <p>Поддршка, следење на потребите и подготовка на понуди според барањата на клиентот.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-strip">
+    <div class="container cta-strip-inner">
+      <div>
+        <h3>Преземете каталог или побарајте понуда</h3>
+        <p>Контактирајте нè за производи, категории и предлог решение за вашиот објект.</p>
+      </div>
+      <a href="kontakt.html" class="btn btn-dark">Контакт</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="index.html" class="logo">Feniks <span>AS</span></a>
+        <p style="margin-top:16px; max-width:300px;">Хигиенски производи и професионални решенија за чистење за компании и институции.</p>
+      </div>
+      <div>
+        <h4>Контакт</h4>
+        <p>+389 70 210 190</p>
+        <p>aleksandar@feniks-as.com</p>
+        <p>Штип, Северна Македонија</p>
+      </div>
+      <div>
+        <h4>Брзи линкови</h4>
+        <ul>
+          <li><a href="proizvodi.html">Производи</a></li>
+          <li><a href="uslugi.html">Услуги</a></li>
+          <li><a href="katalog.html">Каталог</a></li>
+          <li><a href="kontakt.html">Контакт</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Категории</h4>
+        <ul>
+          <li>Санитарни производи</li>
+          <li>Средства за чистење</li>
+          <li>Амбалажа</li>
+          <li>Канцелариски материјал</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">© 2026 Feniks AS. Сите права задржани.</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+  </script>
+</body>
+</html>
